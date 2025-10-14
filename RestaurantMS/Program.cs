@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RestaurantMS.Models;
+using RestaurantMS.Context;
 
 namespace RestaurantMS
 {

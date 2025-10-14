@@ -1,6 +1,7 @@
-﻿namespace RestaurantMS.Models
+﻿namespace RestaurantMS.Context
 {
     using Microsoft.EntityFrameworkCore;
+    using RestaurantMS.Models;
 
     public class AppDbContext : DbContext
     {
@@ -186,6 +187,23 @@
                     CreatedBy = "System"
                 }
             );
+        }
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var now = DateTime.UtcNow;
+            foreach (var entry in ChangeTracker.Entries<ModelBase>())
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Entity.CreatedAt = now;
+                    entry.Entity.UpdatedAt = null;
+                }
+                else if (entry.State == EntityState.Modified)
+                {
+                    entry.Entity.UpdatedAt = now;
+                }
+            }
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 

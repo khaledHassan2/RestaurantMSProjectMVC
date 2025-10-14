@@ -1,0 +1,55 @@
+﻿@using RestaurantMS.ViewModels
+@model CreatMenuItemVM
+@{
+    ViewData["Title"] = "New";
+}
+<h1>New</h1>
+
+<div class="row">
+    <div class="col-lg-5">
+        <form asp-action="New" method="post">
+
+            <div class="form-floating mb-3">
+                <input asp-for="Name" class="form-control" required placeholder="">
+                <label asp-for="Name"></label>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Price" class="form-control" placeholder="">
+                <label asp-for="Price"></label>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="PreparationTimeMinutes" class="form-control" required placeholder="">
+                <label asp-for="PreparationTimeMinutes"></label>
+                <span asp-validation-for="PreparationTimeMinutes" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="DailyOrderCount" class="form-control" required placeholder="">
+                <label asp-for="DailyOrderCount"></label>
+                <span asp-validation-for="DailyOrderCount" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select" aria-label="Default select example">
+                    <option value="">-- Select Category --</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            <a class="btn btn-secondary mx-2" asp-controller="MenuItem" asp-action="Index"> Back </a>
+            <button type="submit" class="btn btn-primary"> Add </button>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}
+
+
+
+

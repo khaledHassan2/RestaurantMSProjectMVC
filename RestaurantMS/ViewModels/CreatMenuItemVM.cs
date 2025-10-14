@@ -1,16 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using RestaurantMS.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace RestaurantMS.Models
+namespace RestaurantMS.ViewModels
 {
-    public class MenuItem:ModelBase
+    public class CreatMenuItemVM
     {
-        [Required, StringLength(150)]
+        [Required, MaxLength(30, ErrorMessage = "Name must be 30 Character"),MinLength(3,ErrorMessage ="Name Must Be Mor than 3 Character")]
         public string Name { get; set; }
 
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be positive")]
         public decimal Price { get; set; }
-
-        public bool IsAvailable { get; set; } = true;
 
         public int PreparationTimeMinutes { get; set; } = 10;
 
@@ -20,7 +20,8 @@ namespace RestaurantMS.Models
         public string? ImageUrl { get; set; } = "/images/default-item.jpg"; // default fallback
 
         // Foreign Key
+        [Required(ErrorMessage ="Category Id Is Required")]
         public int CategoryId { get; set; }
-        public MenuCategory? Category { get; set; }
+        public SelectList? Categories { get; set; } = null!;
     }
 }

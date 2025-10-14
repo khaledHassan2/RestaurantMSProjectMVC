@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RestaurantMS.Context;
 using RestaurantMS.Models;
 using System.Diagnostics;
 
@@ -18,9 +19,7 @@ namespace RestaurantMS.Controllers
         public IActionResult Index()
         {
         
-            var featuredItems = _context.MenuItems
-                                        .Take(4)
-                                        .ToList();
+            var featuredItems = _context.MenuItems.ToList();
 
             return View(featuredItems);
         }
