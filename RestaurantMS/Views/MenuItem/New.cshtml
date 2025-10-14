@@ -6,8 +6,8 @@
 <h1>New</h1>
 
 <div class="row">
-    <div class="col-lg-5">
-        <form asp-action="New" method="post">
+    <div class="col-12 col-lg-6 ">
+        <form asp-action="New" enctype="multipart/form-data" method="post">
 
             <div class="form-floating mb-3">
                 <input asp-for="Name" class="form-control" required placeholder="">
@@ -39,10 +39,16 @@
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="ImageUrl">Upload Image</label>
+                <input type="file" asp-for="ImageUrl" class="form-control" />
+            </div>
             <a class="btn btn-secondary mx-2" asp-controller="MenuItem" asp-action="Index"> Back </a>
             <button type="submit" class="btn btn-primary"> Add </button>
         </form>
+    </div>
+    <div class="col-12 col-lg-6">
+
     </div>
 </div>
 @section Scripts {

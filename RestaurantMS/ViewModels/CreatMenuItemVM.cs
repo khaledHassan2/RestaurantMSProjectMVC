@@ -15,7 +15,7 @@ namespace RestaurantMS.ViewModels
         public int PreparationTimeMinutes { get; set; } = 10;
 
         public int DailyOrderCount { get; set; } = 0;
-
+        public IFormFile? ImageFile { get; set; }
         [StringLength(250)]
         public string? ImageUrl { get; set; } = "/images/default-item.jpg"; // default fallback
 
