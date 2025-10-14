@@ -1,8 +1,26 @@
-﻿@{
+﻿@model IEnumerable<MenuItem>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<h1 class="text-center mt-4">Welcome to Our Restaurant 🍽️</h1>
+<p class="text-center text-muted mb-5">Delicious meals made with love!</p>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="@item.ImageUrl" class="card-img-top w-100" style="height:300px"  alt="@item.Name">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text text-muted">@item.Price LE</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+
