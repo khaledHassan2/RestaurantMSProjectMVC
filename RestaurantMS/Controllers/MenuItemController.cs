@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RestaurantMS.Context;
 using RestaurantMS.Models;
-using RestaurantMS.ViewModels;
+using RestaurantMS.ViewModels.MenuItem;
 using System.Threading.Tasks;
 
 namespace RestaurantMS.Controllers

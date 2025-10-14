@@ -1,4 +1,4 @@
-﻿namespace RestaurantMS.ViewModels
+﻿namespace RestaurantMS.ViewModels.MenuItem
 {
     public class EditMenuItemVM:CreatMenuItemVM
     {

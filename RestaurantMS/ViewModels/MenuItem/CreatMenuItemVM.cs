@@ -2,7 +2,7 @@
 using RestaurantMS.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace RestaurantMS.ViewModels
+namespace RestaurantMS.ViewModels.MenuItem
 {
     public class CreatMenuItemVM
     {

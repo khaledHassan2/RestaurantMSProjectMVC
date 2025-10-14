@@ -1,0 +1,54 @@
+﻿@model MenuCategory
+@{
+    ViewData["Title"] = "Update";
+}
+<style>
+    .form-switch .form-check-input:checked {
+        background-color: #28a745; /* أخضر زاهي */
+        border-color: #28a745;
+        box-shadow: 0 0 6px rgba(40, 167, 69, 0.4);
+    }
+
+    .form-switch .form-check-input {
+        width: 3em;
+        height: 1.5em;
+        cursor: pointer;
+    }
+
+        .form-switch .form-check-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+        }
+</style>
+
+<h1>Update</h1>
+
+<div class="row">
+    <div class="col-12 col-lg-6 pt-5">
+        <form asp-action="Update" method="post">
+
+            <div class="form-floating mb-3">
+                <input asp-for="Name" class="form-control" required placeholder="">
+                <label asp-for="Name"></label>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-check form-switch mb-3">
+                <input asp-for="IsActive" class="form-check-input" type="checkbox">
+                <label asp-for="IsActive" class="form-check-label px-3"></label>
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+
+            <a class="btn btn-secondary mx-2" asp-controller="MenuCategory" asp-action="Index">Back</a>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}
+
+
+
+
