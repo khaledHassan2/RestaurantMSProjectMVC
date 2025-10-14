@@ -11,8 +11,8 @@
         <tr>
             <td>Name</td>
             <td>Price</td>
-            <td>PreparationTimeMinutes</td>
-            <td>DailyOrderCount</td>
+            <td>TimeMinutes</td>
+            <td>OrderCount</td>
             <td>Image</td>
             <td>Category</td>
             <td>Action</td>
@@ -29,7 +29,7 @@
             <td>@emp.Price</td>
             <td>@emp.PreparationTimeMinutes <span class="text-primary"> -ms </span> </td>
             <td>@emp.DailyOrderCount</td>
-            <td><img src="@emp.ImageUrl" class="w-100" style="height:100px"/> </td>
+            <td><img src="@emp.ImageUrl" class="w-100" style="height:50px"/> </td>
             <td>@emp.Category.Name</td>
             <td>
                 <a class="btn btn-outline-warning m-2" href="/MenuItem/Details/@emp.Id">Details</a>

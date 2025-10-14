@@ -7,8 +7,8 @@
 <div class="container mt-5">
     <div class="row">
         <!-- Product Images -->
-        <div class="col-md-6 mb-4">
-            <img src="@Model.ImageUrl" alt="Product" class="img-fluid rounded mb-3 product-image" id="mainImage">
+        <div class="col-md-6 mb-4 ">
+            <img src="@Model.ImageUrl" alt="Product" class="img-fluid rounded mb-3 product-image" style="max-height:70%" id="mainImage">
             
         </div>
 
@@ -38,6 +38,10 @@
                 <label for="quantity" class="form-label">Quantity:</label>
                 <input type="number" class="form-control" id="quantity" value="1" min="1" style="width: 80px;">
             </div>
+            <a class="btn btn-secondary btn-lg mb-3 me-2" href="javascript:history.back()">
+                <i class="bi bi-skip-backward-fill"></i> Back
+            </a>
+
             <button class="btn btn-primary btn-lg mb-3 me-2">
                 <i class="bi bi-cart-plus"></i> Add to Cart
             </button> 

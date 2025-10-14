@@ -12,6 +12,7 @@
         <div class="row justify-content-center g-3">
         @foreach (var item in Model)
         {
+
           @*   <div class="col-md-3 mb-4">
                 <div class="card shadow-sm h-100">
                     <img src="@item.ImageUrl" class="card-img-top w-100" style="height:300px"  alt="@item.Name">
@@ -25,9 +26,11 @@
                         <div class="col-md-4">
                             <div class="product-card bg-white rounded-4 shadow-sm h-100 position-relative">
                                 <span class="badge bg-danger">New</span>
+                <a class="text-decoration-none" asp-controller="MenuItem" asp-action="Details" asp-route-id="@item.Id">
                                 <div class="overflow-hidden">
                             <img src="@item.ImageUrl" class="product-image w-100" style="height:300px" alt="Product">
                                 </div>
+                </a>
                                 <div class="p-4">
                                     <h5 class="fw-bold mb-3">@item.Name</h5>
                                     <div class="d-flex align-items-center mb-3">
