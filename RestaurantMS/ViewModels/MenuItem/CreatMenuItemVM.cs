@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RestaurantMS.Models;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,6 +8,7 @@ namespace RestaurantMS.ViewModels.MenuItem
     public class CreatMenuItemVM
     {
         [Required, MaxLength(30, ErrorMessage = "Name must be 30 Character"),MinLength(3,ErrorMessage ="Name Must Be Mor than 3 Character")]
+        [Remote(action: "IsUniqueName", controller: "MenuItem")]
         public string Name { get; set; }
 
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be positive")]

@@ -16,13 +16,16 @@ namespace RestaurantMS
 
             var app = builder.Build();
 
-            // Database Migration
-            using (var scope = app.Services.CreateScope())
+            // Database Migration (Development only)
+            if (app.Environment.IsDevelopment())
             {
-                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                db.Database.Migrate();
-                
+                using (var scope = app.Services.CreateScope())
+                {
+                    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                    db.Database.Migrate();
+                }
             }
+
 
             // Middleware
             if (!app.Environment.IsDevelopment())

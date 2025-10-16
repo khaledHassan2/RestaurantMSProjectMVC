@@ -20,6 +20,7 @@ namespace RestaurantMS.Controllers
             var cat = await _context.MenuCategories.ToListAsync();
             return View(cat);
         }
+
         public IActionResult Create()
         {
             return View();
@@ -31,18 +32,28 @@ namespace RestaurantMS.Controllers
             {
             return View();
             }
-            var cats =await _context.MenuCategories.ToListAsync();
-            foreach (var c in cats) 
-            {
-                if (c.Name == menu.Name)
-                {
-                    return View();
-                }
+            //var cats =await _context.MenuCategories.ToListAsync();
+            //foreach (var c in cats) 
+            //{
+            //    if (c.Name == menu.Name)
+            //    {
+            //        return View();
+            //    }
                 
-            }
+            //}
                 await _context.MenuCategories.AddAsync(menu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
+        }
+        [AcceptVerbs("GET", "POST")]
+        public async Task<IActionResult> IsUniqueName(string name)
+        {
+            if (await _context.MenuCategories.AnyAsync(e => e.Name == name))
+            {
+                return Json($"Name {name} is already in use.");
+            }
+
+            return Json(true);
         }
         public async Task<IActionResult> Update(int id)
         {

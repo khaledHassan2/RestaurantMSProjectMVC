@@ -16,13 +16,38 @@ namespace RestaurantMS.Controllers
         {
             _context = context;
         }
-
-        public async Task<IActionResult> Index()
+        [AcceptVerbs("GET", "POST")]
+        public async Task<IActionResult> IsUniqueName(string name)
         {
-            var items =await _context.MenuItems.Include(m=>m.Category).ToListAsync();
+            if (await _context.MenuItems.AnyAsync(e => e.Name == name))
+            {
+                return Json($"Name {name} is already in use.");
+            }
 
-            return View(items);
+            return Json(true);
         }
+        //public async Task<IActionResult> Index()
+        //{
+        //    var items =await _context.MenuItems.Include(m=>m.Category).ToListAsync();
+
+        //    return View(items);
+        //}
+        public async Task<IActionResult> Index(string searchString)
+        {
+            ViewData["CurrentFilter"] = searchString;
+
+            var items = _context.MenuItems
+                                .Include(m => m.Category)
+                                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(m => m.Name.Contains(searchString));
+            }
+
+            return View(await items.ToListAsync());
+        }
+
         public async Task<IActionResult> New()
         {
             var cats=await _context.MenuCategories.ToListAsync();

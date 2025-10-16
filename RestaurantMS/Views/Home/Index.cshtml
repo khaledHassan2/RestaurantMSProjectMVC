@@ -9,6 +9,14 @@
 
 <div class="bg-light p-lg-5">
     <div class="container-lg">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        {
+            <p>
+                Search by name:
+                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control d-inline-block" style="width:250px;" />
+                <input type="submit" value="Search" class="btn btn-primary ms-2" />
+            </p>
+        }
         <div class="row justify-content-center g-3">
         @foreach (var item in Model)
         {
